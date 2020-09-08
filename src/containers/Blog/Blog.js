@@ -9,6 +9,7 @@ import './Blog.css';
 class Blog extends Component {
   state = {
     posts: [],
+    selectedPost: null,
   };
 
   async componentDidMount() {
@@ -28,15 +29,26 @@ class Blog extends Component {
       console.error('Fetch Error:', e);
     }
   }
+
+  postSelectedHandler(id) {
+    this.setState({ selectedPost: id });
+  }
   render() {
     const posts = this.state.posts.map(({ id, title, author }) => {
-      return <Post key={id} title={title} author={author} />;
+      return (
+        <Post
+          key={id}
+          title={title}
+          author={author}
+          clicked={() => this.postSelectedHandler(id)}
+        />
+      );
     });
     return (
       <div>
         <section className="Posts">{posts}</section>
         <section>
-          <FullPost />
+          <FullPost id={this.state.selectedPost} />
         </section>
         <section>
           <NewPost />
