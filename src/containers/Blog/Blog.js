@@ -10,6 +10,7 @@ class Blog extends Component {
   state = {
     posts: [],
     selectedPost: null,
+    error: false,
   };
 
   async componentDidMount() {
@@ -25,7 +26,13 @@ class Blog extends Component {
         };
       });
       this.setState({ posts: addAuthors });
+      if (this.state.error) {
+        this.setState({ error: false });
+      }
     } catch (e) {
+      if (!this.state.error) {
+        this.setState({ error: true });
+      }
       console.error('Fetch Error:', e);
     }
   }
@@ -33,17 +40,25 @@ class Blog extends Component {
   postSelectedHandler(id) {
     this.setState({ selectedPost: id });
   }
+
   render() {
-    const posts = this.state.posts.map(({ id, title, author }) => {
-      return (
-        <Post
-          key={id}
-          title={title}
-          author={author}
-          clicked={() => this.postSelectedHandler(id)}
-        />
-      );
-    });
+    let posts = (
+      <p style={{ textAlign: 'center' }}>
+        Something went wrong getting the posts!
+      </p>
+    );
+    if (!this.state.error) {
+      posts = this.state.posts.map(({ id, title, author }) => {
+        return (
+          <Post
+            key={id}
+            title={title}
+            author={author}
+            clicked={() => this.postSelectedHandler(id)}
+          />
+        );
+      });
+    }
     return (
       <div>
         <section className="Posts">{posts}</section>
