@@ -1,0 +1,17 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 600000,
+  "files.trimFinalNewlines": true,
+  "eslint.options": {
+    "configFile": "./JS-Submodule/.eslintrc.json"
+  },
+  "prettier.configPath": "./JS-Submodule/.prettierrc",
+  "files.eol": "\n",
+  "cSpell.ignoreWords": [],
+  "cSpell.words": [],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
