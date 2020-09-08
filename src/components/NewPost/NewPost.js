@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from '../../../src/axios';
 
 import './NewPost.css';
 
@@ -28,18 +28,18 @@ class NewPost extends Component {
         <input
           type="text"
           value={this.state.title}
-          onChange={event => this.setState({ title: event.target.value })}
+          onChange={({ target }) => this.setState({ title: target.value })}
         />
         <label>Content</label>
         <textarea
           rows="4"
           value={this.state.content}
-          onChange={event => this.setState({ content: event.target.value })}
+          onChange={({ target }) => this.setState({ content: target.value })}
         />
         <label>Author</label>
         <select
           value={this.state.author}
-          onChange={event => this.setState({ author: event.target.value })}
+          onChange={({ target }) => this.setState({ author: target.value })}
         >
           <option value="Tyler">Tyler</option>
         </select>
