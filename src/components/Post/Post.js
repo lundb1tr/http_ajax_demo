@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import './Post.css';
 
@@ -14,5 +13,4 @@ const post = ({ clicked, title, author }) => {
   );
 };
 
-/* This makes this component aware of the route */
-export default withRouter(post);
+export default post;
