@@ -23,7 +23,7 @@ class Blog extends Component {
                     textDecoration: 'underline',
                   }}
                 >
-                  Home
+                  Posts
                 </NavLink>
               </li>
               <li>
