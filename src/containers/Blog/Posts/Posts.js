@@ -13,7 +13,7 @@ class Posts extends Component {
   postSelectedHandler(id) {
     /* Both syntaxes work to navigate programmatically */
     // this.props.history.push({ pathname: `/${id}` });
-    this.props.history.push(`/${id}`);
+    this.props.history.push(`/posts/${id}`);
   }
 
   async componentDidMount() {
@@ -64,7 +64,11 @@ class Posts extends Component {
       <div>
         <section className="Posts">{posts}</section>;
         {/* :id will tell the Route to use a dynamic value to create the path.  Needs to be after non-dynamic routes */}
-        <Route path="/:id" exact component={FullPost} />
+        <Route
+          path={`${this.props.match.url}/:id`}
+          exact
+          component={FullPost}
+        />
       </div>
     );
   }

@@ -15,7 +15,7 @@ class Blog extends Component {
               <li>
                 {/* Prevents sending new request, thus reloading the app.  Only re-renders the page */}
                 <NavLink
-                  to="/"
+                  to="/posts/"
                   exact
                   activeClassName="my-active"
                   activeStyle={{
@@ -47,7 +47,7 @@ class Blog extends Component {
         <Switch>
           {/* Switch is no longer necessary but leaving in for reference */}
           <Route path="/new-post" exact component={NewPost} />
-          <Route path="/" component={Posts} />
+          <Route path="/posts" component={Posts} />
         </Switch>
       </div>
     );
