@@ -3,7 +3,7 @@ import './Blog.css';
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
 import { Route, NavLink, Switch } from 'react-router-dom';
-import FullPost from './FullPost/FullPost';
+// import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
   render() {
@@ -44,11 +44,10 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        <Route path="/" exact component={Posts} />
         <Switch>
+          {/* Switch is no longer necessary but leaving in for reference */}
           <Route path="/new-post" exact component={NewPost} />
-          {/* :id will tell the Route to use a dynamic value to create the path.  Needs to be after non-dynamic routes */}
-          <Route path="/:id" exact component={FullPost} />
+          <Route path="/" component={Posts} />
         </Switch>
       </div>
     );

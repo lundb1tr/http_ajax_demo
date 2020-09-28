@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from '../../../axios';
 import Post from '../../../components/Post/Post';
+import { Route } from 'react-router-dom';
+import FullPost from '../FullPost/FullPost';
 import './Posts.css';
 
 class Posts extends Component {
@@ -58,7 +60,13 @@ class Posts extends Component {
         );
       });
     }
-    return <section className="Posts">{posts}</section>;
+    return (
+      <div>
+        <section className="Posts">{posts}</section>;
+        {/* :id will tell the Route to use a dynamic value to create the path.  Needs to be after non-dynamic routes */}
+        <Route path="/:id" exact component={FullPost} />
+      </div>
+    );
   }
 }
 
