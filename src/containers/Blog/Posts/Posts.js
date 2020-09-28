@@ -17,7 +17,7 @@ class Posts extends Component {
   }
 
   async componentDidMount() {
-    console.log(this.props);
+    console.log('[Posts.js]', this.props);
     try {
       const posts = await axios.get('/posts');
       const trimmedPosts = await posts.data.slice(0, 4);
