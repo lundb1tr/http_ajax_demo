@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import './Blog.css';
 import Posts from './Posts/Posts';
-import NewPost from './NewPost/NewPost';
+// import NewPost from './NewPost/NewPost';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import asyncComponent from '../../hoc/asyncComponent';
+
+const AsyncNewPost = asyncComponent(() => {
+  /* Dynamic import syntax */
+  return import('./NewPost/NewPost');
+});
 
 class Blog extends Component {
   state = {
-    auth: false,
+    auth: true,
   };
 
   render() {
@@ -50,7 +56,7 @@ class Blog extends Component {
         <Switch>
           {/* Switch is no longer necessary but leaving in for reference */}
           {this.state.auth ? (
-            <Route path="/new-post" exact component={NewPost} />
+            <Route path="/new-post" exact component={AsyncNewPost} />
           ) : null}
           <Route path="/posts" component={Posts} />
           {/* Redirect from root will not work with the <Route render /> functionality below */}
