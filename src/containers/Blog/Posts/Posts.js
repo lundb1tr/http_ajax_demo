@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../../../axios';
 import Post from '../../../components/Post/Post';
-import { Link } from 'react-router-dom';
 import './Posts.css';
 
 class Posts extends Component {
@@ -10,7 +9,9 @@ class Posts extends Component {
   };
 
   postSelectedHandler(id) {
-    this.setState({ selectedPost: id });
+    /* Both syntaxes work to navigate programmatically */
+    // this.props.history.push({ pathname: `/${id}` });
+    this.props.history.push(`/${id}`);
   }
 
   async componentDidMount() {
@@ -45,14 +46,15 @@ class Posts extends Component {
     if (!this.state.error) {
       posts = this.state.posts.map(({ id, title, author }) => {
         return (
-          <Link to={`/${id}`} key={id}>
-            <Post
-              className="Posts"
-              title={title}
-              author={author}
-              clicked={() => this.postSelectedHandler(id)}
-            />
-          </Link>
+          //<Link to={`/${id}`} key={id}>
+          <Post
+            key={id}
+            className="Posts"
+            title={title}
+            author={author}
+            clicked={() => this.postSelectedHandler(id)}
+          />
+          //</Link>
         );
       });
     }
