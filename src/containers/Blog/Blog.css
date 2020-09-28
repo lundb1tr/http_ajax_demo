@@ -23,3 +23,7 @@
 .Blog a:active {
   color: #fa923f;
 }
+
+.Blog a.active {
+  color: #fa923f;
+}
