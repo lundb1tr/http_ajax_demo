@@ -13,7 +13,7 @@ class Blog extends Component {
             <ul>
               <li>
                 {/* Prevents sending new request, thus reloading the app.  Only re-renders the page */}
-                <NavLink to="/" exact>
+                <NavLink to="/" exact activeClassName="my-active">
                   Home
                 </NavLink>
               </li>
