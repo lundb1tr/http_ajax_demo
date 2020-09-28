@@ -13,7 +13,15 @@ class Blog extends Component {
             <ul>
               <li>
                 {/* Prevents sending new request, thus reloading the app.  Only re-renders the page */}
-                <NavLink to="/" exact activeClassName="active">
+                <NavLink
+                  to="/"
+                  exact
+                  activeClassName="my-active"
+                  activeStyle={{
+                    color: '#fa923f',
+                    textDecoration: 'underline',
+                  }}
+                >
                   Home
                 </NavLink>
               </li>
