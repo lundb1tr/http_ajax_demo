@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import './Blog.css';
 import Posts from './Posts/Posts';
 // import NewPost from './NewPost/NewPost';
-import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import asyncComponent from '../../hoc/asyncComponent';
 
+const NewPost = React.lazy(() => import('./NewPost/NewPost'));
 const AsyncNewPost = asyncComponent(() => {
   /* Dynamic import syntax */
   return import('./NewPost/NewPost');
@@ -56,7 +57,15 @@ class Blog extends Component {
         <Switch>
           {/* Switch is no longer necessary but leaving in for reference */}
           {this.state.auth ? (
-            <Route path="/new-post" exact component={AsyncNewPost} />
+            <Route
+              path="/new-post"
+              exact
+              render={() => (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <NewPost />
+                </Suspense>
+              )}
+            />
           ) : null}
           <Route path="/posts" component={Posts} />
           {/* Redirect from root will not work with the <Route render /> functionality below */}
