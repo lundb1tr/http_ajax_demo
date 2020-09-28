@@ -53,6 +53,7 @@ class Blog extends Component {
             <Route path="/new-post" exact component={NewPost} />
           ) : null}
           <Route path="/posts" component={Posts} />
+          {/* Redirect from root will not work with the <Route render /> functionality below */}
           <Route render={() => <h1>Not Found</h1>} />
           {/* <Redirect from="/" to="/posts" /> */}
         </Switch>
