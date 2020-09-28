@@ -19,7 +19,10 @@ class Blog extends Component {
                 {/* Prevents sending new request, thus reloading the app.  Only re-renders the page */}
                 <Link
                   to={{
+                    /* Always an absolute path */
                     pathname: '/new-post',
+                    /* Dynamically/relatively created path */
+                    // pathname: `${this.props.match.url}/new-post`,
                     hash: '#submit',
                     search: '?quick-submit=true',
                   }}
