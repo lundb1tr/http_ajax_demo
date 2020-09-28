@@ -44,10 +44,10 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
+        <Route path="/" exact component={Posts} />
         <Switch>
-          <Route path="/" exact component={Posts} />
           <Route path="/new-post" exact component={NewPost} />
-          {/* :id will tell the Route to use a dynamic value to create the path */}
+          {/* :id will tell the Route to use a dynamic value to create the path.  Needs to be after non-dynamic routes */}
           <Route path="/:id" exact component={FullPost} />
         </Switch>
       </div>
